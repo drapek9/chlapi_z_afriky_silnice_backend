@@ -1,0 +1,7 @@
+services:
+  - name: calculator-service
+    type: web
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python app.py"
+    instances: 1
