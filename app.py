@@ -14,4 +14,9 @@ def get_road_priorities_for_repair():
     if stavy_silnic == None or historie_oprav_silnic == None:
         return jsonify({"result": False, "reason": "server nezískal požadovaná data"})
     
+    print("------------------ stavy silnic -------------------")
+    print(stavy_silnic)
+    print("------------------ historie oprav silnic -------------------")
+    print(historie_oprav_silnic)
+    
     return jsonify({"result": True})
