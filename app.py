@@ -61,9 +61,6 @@ def ahoj(silnice):
     # výstup
     for s in silnice_sorted:
         print(f"priorita: {s['priority_score']} - {s['stav_sil']} / {s['ozn_kat']} / {s['ozn_trida']}")
-    
-
-    import numpy as np
 
     url = "https://services6.arcgis.com/ogJAiK65nXL1mXAW/arcgis/rest/services/Nemocnice/FeatureServer/0/query"
     url2 = "https://services6.arcgis.com/ogJAiK65nXL1mXAW/arcgis/rest/services/Seznam_škol_a_školských_zařízení/FeatureServer/0/query"
@@ -87,7 +84,7 @@ def ahoj(silnice):
     for s in silnice_with_dist:
         print(f"Silnice {s.get('ozn_sil')} – min vzdálenost k budově: {s['min_dist']:.4f}")
 
-# @app.route('/get_road_priorities_for_repair', methods=['POST'])
+@app.route('/get_road_priorities_for_repair', methods=['POST'])
 def get_road_priorities_for_repair():
     import requests
 
@@ -126,9 +123,9 @@ def get_road_priorities_for_repair():
     else:
         print(f"❌ Chyba: {response.status_code}")
         # return print("neproběhlo to úspěšně")
-        # return jsonify({"result": False})
+        return jsonify({"result": False})
     
-    # return jsonify({"result": True, "data": sorted_roads})
+    return jsonify({"result": True, "data": sorted_roads})
     # return print("Vše proběhlo v pořádku")
 
-get_road_priorities_for_repair()
+# get_road_priorities_for_repair()
