@@ -44,5 +44,3 @@ def get_road_priorities_for_repair():
     
     return jsonify({"result": True, "data": sorted_roads})
     # return print("Vše proběhlo v pořádku")
-
-get_road_priorities_for_repair()
