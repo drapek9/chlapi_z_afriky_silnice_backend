@@ -87,9 +87,6 @@ def vzdalenost_finalni_body(silnice):
 def ahoj(silnice):
     silnice = silnice_zakladni_body(silnice)
 
-    silnice = sorted(silnice, key=lambda x: x['priority_score'], reverse=True)
-    silnice = silnice[:200]
-
     silnice_with_dist = silnice_vzdalenost_body(silnice)
 
     silnice_with_dist = vzdalenost_finalni_body(silnice_with_dist)
