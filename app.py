@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -111,8 +111,6 @@ def ahoj(silnice):
 
 # @app.route('/get_road_priorities_for_repair', methods=['POST'])
 def get_road_priorities_for_repair():
-    import requests
-
     url = "https://services6.arcgis.com/ogJAiK65nXL1mXAW/arcgis/rest/services/Stav_povrchu_silnic/FeatureServer/0/query"
     params = {
         "outFields": "*",
@@ -152,6 +150,6 @@ def get_road_priorities_for_repair():
         return jsonify({"result": False})
     
     return jsonify({"result": True, "data": sorted_roads})
-    return print("Vše proběhlo v pořádku")
+    # return print("Vše proběhlo v pořádku")
 
-get_road_priorities_for_repair()
+# get_road_priorities_for_repair()
