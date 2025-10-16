@@ -87,12 +87,8 @@ def vzdalenost_finalni_body(silnice):
 def ahoj(silnice):
     silnice = silnice_zakladni_body(silnice)
 
-    # seřazení
-    # silnice_sorted = sorted(silnice, key=lambda x: x["priority_score"], reverse=False)
-
-    # výstup
-    # for s in silnice_sorted:
-    #     print(f"priorita: {s['priority_score']} - {s['stav_sil']} / {s['ozn_kat']} / {s['ozn_trida']}")
+    silnice = sorted(silnice, key=lambda x: x['priority_score'], reverse=True)
+    silnice = silnice[:200]
 
     silnice_with_dist = silnice_vzdalenost_body(silnice)
 
@@ -100,14 +96,7 @@ def ahoj(silnice):
 
     silnice_with_dist = sorted(silnice_with_dist, key=lambda x: x['finalni_vzdalenost']+x['priority_score'], reverse=True)
 
-    # for one in silnice_with_dist:
-    #     print(f"{one['ozn_sil']} {one['finalni_vzdalenost']+one['priority_score']}")
-    # print(silnice_with_dist[-1])
-
     return silnice_with_dist
-
-    # for s in silnice_with_dist:
-    #     print(f"Silnice {s.get('ozn_sil')} – min vzdálenost k budově: {s['min_dist']:.4f}")
 
 @app.route('/get_road_priorities_for_repair', methods=['POST'])
 def get_road_priorities_for_repair():
@@ -143,10 +132,7 @@ def get_road_priorities_for_repair():
             new_road["geometry"] = one_feature["geometry"]["coordinates"]
             sorted_roads.append(new_road)
         sorted_roads = ahoj(sorted_roads)
-        print(sorted_roads)
     else:
-        print(f"❌ Chyba: {response.status_code}")
-        # return print("neproběhlo to úspěšně")
         return jsonify({"result": False})
     
     return jsonify({"result": True, "data": sorted_roads})
