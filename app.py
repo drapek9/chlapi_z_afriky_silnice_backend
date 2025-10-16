@@ -109,7 +109,7 @@ def ahoj(silnice):
     # for s in silnice_with_dist:
     #     print(f"Silnice {s.get('ozn_sil')} – min vzdálenost k budově: {s['min_dist']:.4f}")
 
-# @app.route('/get_road_priorities_for_repair', methods=['POST'])
+@app.route('/get_road_priorities_for_repair', methods=['POST'])
 def get_road_priorities_for_repair():
     url = "https://services6.arcgis.com/ogJAiK65nXL1mXAW/arcgis/rest/services/Stav_povrchu_silnic/FeatureServer/0/query"
     params = {
